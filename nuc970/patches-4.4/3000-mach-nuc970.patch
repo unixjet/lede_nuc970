@@ -1,7 +1,7 @@
-Index: linux-4.4.92/arch/arm/Kconfig
+Index: b/arch/arm/Kconfig
 ===================================================================
---- linux-4.4.92.orig/arch/arm/Kconfig
-+++ linux-4.4.92/arch/arm/Kconfig
+--- a/arch/arm/Kconfig
++++ b/arch/arm/Kconfig
 @@ -590,6 +590,18 @@ config ARCH_W90X900
  	  <http://www.nuvoton.com/hq/enu/ProductAndSales/ProductLines/
  		ConsumerElectronicsIC/ARMMicrocontroller/ARMMicrocontroller>
@@ -30,10 +30,10 @@ Index: linux-4.4.92/arch/arm/Kconfig
  source "arch/arm/mach-zx/Kconfig"
  
  source "arch/arm/mach-zynq/Kconfig"
-Index: linux-4.4.92/arch/arm/Makefile
+Index: b/arch/arm/Makefile
 ===================================================================
---- linux-4.4.92.orig/arch/arm/Makefile
-+++ linux-4.4.92/arch/arm/Makefile
+--- a/arch/arm/Makefile
++++ b/arch/arm/Makefile
 @@ -224,6 +224,7 @@ machine-$(CONFIG_ARCH_VERSATILE)	+= vers
  machine-$(CONFIG_ARCH_VEXPRESS)		+= vexpress
  machine-$(CONFIG_ARCH_VT8500)		+= vt8500
@@ -42,10 +42,10 @@ Index: linux-4.4.92/arch/arm/Makefile
  machine-$(CONFIG_ARCH_ZX)		+= zx
  machine-$(CONFIG_ARCH_ZYNQ)		+= zynq
  machine-$(CONFIG_PLAT_SPEAR)		+= spear
-Index: linux-4.4.92/arch/arm/configs/nuc972_defconfig
+Index: b/arch/arm/configs/nuc972_defconfig
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/configs/nuc972_defconfig
++++ b/arch/arm/configs/nuc972_defconfig
 @@ -0,0 +1,1468 @@
 +#
 +# Automatically generated file; DO NOT EDIT.
@@ -1515,10 +1515,10 @@ Index: linux-4.4.92/arch/arm/configs/nuc972_defconfig
 +# CONFIG_CORDIC is not set
 +# CONFIG_DDR is not set
 +# CONFIG_VIRTUALIZATION is not set
-Index: linux-4.4.92/arch/arm/kernel/atags_parse.c
+Index: b/arch/arm/kernel/atags_parse.c
 ===================================================================
---- linux-4.4.92.orig/arch/arm/kernel/atags_parse.c
-+++ linux-4.4.92/arch/arm/kernel/atags_parse.c
+--- a/arch/arm/kernel/atags_parse.c
++++ b/arch/arm/kernel/atags_parse.c
 @@ -191,7 +191,11 @@ setup_machine_tags(phys_addr_t __atags_p
  	 * locate machine in the list of supported machines.
  	 */
@@ -1531,10 +1531,10 @@ Index: linux-4.4.92/arch/arm/kernel/atags_parse.c
  			pr_info("Machine: %s\n", p->name);
  			mdesc = p;
  			break;
-Index: linux-4.4.92/arch/arm/kernel/fiqasm.S
+Index: b/arch/arm/kernel/fiqasm.S
 ===================================================================
---- linux-4.4.92.orig/arch/arm/kernel/fiqasm.S
-+++ linux-4.4.92/arch/arm/kernel/fiqasm.S
+--- a/arch/arm/kernel/fiqasm.S
++++ b/arch/arm/kernel/fiqasm.S
 @@ -25,6 +25,7 @@
  ENTRY(__set_fiq_regs)
  	mov	r2, #PSR_I_BIT | PSR_F_BIT | FIQ_MODE
@@ -1543,10 +1543,10 @@ Index: linux-4.4.92/arch/arm/kernel/fiqasm.S
  	msr	cpsr_c, r2	@ select FIQ mode
  	mov	r0, r0		@ avoid hazard prior to ARMv4
  	ldmia	r0!, {r8 - r12}
-Index: linux-4.4.92/arch/arm/mach-nuc970/Kconfig
+Index: b/arch/arm/mach-nuc970/Kconfig
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/Kconfig
++++ b/arch/arm/mach-nuc970/Kconfig
 @@ -0,0 +1,74 @@
 +if ARCH_NUC970
 +
@@ -1622,10 +1622,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/Kconfig
 +
 +endchoice
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/Makefile
+Index: b/arch/arm/mach-nuc970/Makefile
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/Makefile
++++ b/arch/arm/mach-nuc970/Makefile
 @@ -0,0 +1,12 @@
 +#
 +# Makefile for the linux kernel.
@@ -1639,18 +1639,18 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/Makefile
 +obj-$(CONFIG_NUC970_FIQ)	+= fiq.o
 +obj-$(CONFIG_OF)		+= dt-nuc972-evb.o
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/Makefile.boot
+Index: b/arch/arm/mach-nuc970/Makefile.boot
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/Makefile.boot
++++ b/arch/arm/mach-nuc970/Makefile.boot
 @@ -0,0 +1,3 @@
 +zreladdr-y	:= 0x00008000
 +params_phys-y	:= 0x00000100
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/clk-apll.c
+Index: b/arch/arm/mach-nuc970/clk-apll.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/clk-apll.c
++++ b/arch/arm/mach-nuc970/clk-apll.c
 @@ -0,0 +1,185 @@
 +/*
 + * linux/arch/arm/mach-nuc970/clk-apll.c
@@ -1837,10 +1837,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/clk-apll.c
 +
 +	return clk;
 +}
-Index: linux-4.4.92/arch/arm/mach-nuc970/clk-ccf.c
+Index: b/arch/arm/mach-nuc970/clk-ccf.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/clk-ccf.c
++++ b/arch/arm/mach-nuc970/clk-ccf.c
 @@ -0,0 +1,679 @@
 +/*
 + * linux/arch/arm/mach-nuc970/clk-ccf.c
@@ -2521,10 +2521,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/clk-ccf.c
 +
 +	return 0;
 +}
-Index: linux-4.4.92/arch/arm/mach-nuc970/clk-ccf.h
+Index: b/arch/arm/mach-nuc970/clk-ccf.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/clk-ccf.h
++++ b/arch/arm/mach-nuc970/clk-ccf.h
 @@ -0,0 +1,47 @@
 +#ifndef __MACH_NUC970_CLK_H
 +#define __MACH_NUC970_CLK_H
@@ -2573,10 +2573,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/clk-ccf.h
 +}
 +
 +#endif
-Index: linux-4.4.92/arch/arm/mach-nuc970/clk-upll.c
+Index: b/arch/arm/mach-nuc970/clk-upll.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/clk-upll.c
++++ b/arch/arm/mach-nuc970/clk-upll.c
 @@ -0,0 +1,99 @@
 +/*
 + * linux/arch/arm/mach-nuc970/clk-upll.c
@@ -2677,10 +2677,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/clk-upll.c
 +
 +	return clk;
 +}
-Index: linux-4.4.92/arch/arm/mach-nuc970/clock.c
+Index: b/arch/arm/mach-nuc970/clock.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/clock.c
++++ b/arch/arm/mach-nuc970/clock.c
 @@ -0,0 +1,295 @@
 +/*
 + * linux/arch/arm/mach-nuc970/clock.c
@@ -2977,10 +2977,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/clock.c
 +}
 +
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/clock.h
+Index: b/arch/arm/mach-nuc970/clock.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/clock.h
++++ b/arch/arm/mach-nuc970/clock.h
 @@ -0,0 +1,35 @@
 +/*
 + * linux/arch/arm/mach-nuc970/clock.h
@@ -3017,10 +3017,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/clock.h
 +		.con_id		= _conname,		\
 +	}
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/cpu.c
+Index: b/arch/arm/mach-nuc970/cpu.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/cpu.c
++++ b/arch/arm/mach-nuc970/cpu.c
 @@ -0,0 +1,62 @@
 +/*
 + * linux/arch/arm/mach-nuc970/cpu.c
@@ -3084,10 +3084,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/cpu.c
 +
 +EXPORT_SYMBOL(nuc970_restart);
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/cpu.h
+Index: b/arch/arm/mach-nuc970/cpu.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/cpu.h
++++ b/arch/arm/mach-nuc970/cpu.h
 @@ -0,0 +1,58 @@
 +/*
 + * arch/arm/mach-nuc970/cpu.h
@@ -3147,10 +3147,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/cpu.h
 +
 +#endif //__CPU_H__
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/dev.c
+Index: b/arch/arm/mach-nuc970/dev.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/dev.c
++++ b/arch/arm/mach-nuc970/dev.c
 @@ -0,0 +1,1707 @@
 +/*
 + * linux/arch/arm/mach-nuc970/dev.c
@@ -4859,10 +4859,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/dev.c
 +#endif
 +}
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/dt-generic.h
+Index: b/arch/arm/mach-nuc970/dt-generic.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/dt-generic.h
++++ b/arch/arm/mach-nuc970/dt-generic.h
 @@ -0,0 +1,41 @@
 +/*
 + * arch/arm/mach-nuc970/dt-generic.h
@@ -4905,10 +4905,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/dt-generic.h
 +
 +#endif //__GENERIC_H__
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/dt-nuc972-evb.c
+Index: b/arch/arm/mach-nuc970/dt-nuc972-evb.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/dt-nuc972-evb.c
++++ b/arch/arm/mach-nuc970/dt-nuc972-evb.c
 @@ -0,0 +1,92 @@
 + /*
 + * linux/arch/arm/mach-nuc970/Board-dt-nuc972.c
@@ -5002,10 +5002,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/dt-nuc972-evb.c
 +    .restart        = nuc970_restart,
 +MACHINE_END
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/etime.c
+Index: b/arch/arm/mach-nuc970/etime.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/etime.c
++++ b/arch/arm/mach-nuc970/etime.c
 @@ -0,0 +1,302 @@
 +/*
 + * linux/arch/arm/mach-nuc970/etime.c
@@ -5309,10 +5309,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/etime.c
 +	nuc970_clockevents_init();
 +	nuc970_setup_default_serial_console();
 +}
-Index: linux-4.4.92/arch/arm/mach-nuc970/fiq.S
+Index: b/arch/arm/mach-nuc970/fiq.S
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/fiq.S
++++ b/arch/arm/mach-nuc970/fiq.S
 @@ -0,0 +1,35 @@
 +/*
 + * Timer FIQ handler
@@ -5349,10 +5349,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/fiq.S
 +    subs	pc, lr, #4   
 +    
 +fiq_handler_end:
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/clkdev.h
+Index: b/arch/arm/mach-nuc970/include/mach/clkdev.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/clkdev.h
++++ b/arch/arm/mach-nuc970/include/mach/clkdev.h
 @@ -0,0 +1,7 @@
 +#ifndef __ASM_MACH_CLKDEV_H
 +#define __ASM_MACH_CLKDEV_H
@@ -5361,10 +5361,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/clkdev.h
 +#define __clk_put(clk) do { } while (0)
 +
 +#endif
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/debug-macro.S
+Index: b/arch/arm/mach-nuc970/include/mach/debug-macro.S
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/debug-macro.S
++++ b/arch/arm/mach-nuc970/include/mach/debug-macro.S
 @@ -0,0 +1,67 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/debug-macro.S
@@ -5433,10 +5433,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/debug-macro.S
 +	beq	1688b
 +	.endm
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/drvjpeg.h
+Index: b/arch/arm/mach-nuc970/include/mach/drvjpeg.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/drvjpeg.h
++++ b/arch/arm/mach-nuc970/include/mach/drvjpeg.h
 @@ -0,0 +1,349 @@
 +/* drvjpeg.h
 + *
@@ -5787,10 +5787,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/drvjpeg.h
 +
 +
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/entry-macro.S
+Index: b/arch/arm/mach-nuc970/include/mach/entry-macro.S
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/entry-macro.S
++++ b/arch/arm/mach-nuc970/include/mach/entry-macro.S
 @@ -0,0 +1,30 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/entry-macro.S
@@ -5822,10 +5822,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/entry-macro.S
 +		cmp	\irqnr, #0
 +
 +	.endm
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/gpio.h
+Index: b/arch/arm/mach-nuc970/include/mach/gpio.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/gpio.h
++++ b/arch/arm/mach-nuc970/include/mach/gpio.h
 @@ -0,0 +1,187 @@
 +/*
 + *  Nuvoton NUC970 GPIO API definitions
@@ -6014,10 +6014,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/gpio.h
 +
 +
 +#endif /* __ASM_MACH_NUC970_GPIO_H*/
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/hardware.h
+Index: b/arch/arm/mach-nuc970/include/mach/hardware.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/hardware.h
++++ b/arch/arm/mach-nuc970/include/mach/hardware.h
 @@ -0,0 +1,27 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/hardware.h
@@ -6046,10 +6046,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/hardware.h
 +#define CONFIG_NO_MULTIWORD_IO
 +
 +#endif /* __ASM_ARCH_HARDWARE_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/iic.h
+Index: b/arch/arm/mach-nuc970/include/mach/iic.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/iic.h
++++ b/arch/arm/mach-nuc970/include/mach/iic.h
 @@ -0,0 +1,51 @@
 +/*linux/include/asm-arm/arch-nuc970/iic.h
 + *
@@ -6102,10 +6102,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/iic.h
 +extern void mfp_set_groupg(struct device *dev);
 + 
 +#endif // __ASM_ARCH_IIC_H 
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/io.h
+Index: b/arch/arm/mach-nuc970/include/mach/io.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/io.h
++++ b/arch/arm/mach-nuc970/include/mach/io.h
 @@ -0,0 +1,29 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/io.h
@@ -6136,10 +6136,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/io.h
 +#define __io(a)		__typesafe_io(a)
 +
 +#endif
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/irqs.h
+Index: b/arch/arm/mach-nuc970/include/mach/irqs.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/irqs.h
++++ b/arch/arm/mach-nuc970/include/mach/irqs.h
 @@ -0,0 +1,130 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/irqs.h
@@ -6271,10 +6271,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/irqs.h
 +
 +
 +#endif /* __ASM_ARCH_IRQ_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/map.h
+Index: b/arch/arm/mach-nuc970/include/mach/map.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/map.h
++++ b/arch/arm/mach-nuc970/include/mach/map.h
 @@ -0,0 +1,246 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/map.h
@@ -6522,10 +6522,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/map.h
 +
 +
 +#endif /* __ASM_ARCH_MAP_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/memory.h
+Index: b/arch/arm/mach-nuc970/include/mach/memory.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/memory.h
++++ b/arch/arm/mach-nuc970/include/mach/memory.h
 @@ -0,0 +1,22 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/memory.h
@@ -6549,10 +6549,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/memory.h
 +#define PHYS_OFFSET	UL(0x00000000)
 +
 +#endif
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/mfp.h
+Index: b/arch/arm/mach-nuc970/include/mach/mfp.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/mfp.h
++++ b/arch/arm/mach-nuc970/include/mach/mfp.h
 @@ -0,0 +1,32 @@
 +/*
 + * linux/arch/arm/mach-nuc970/include/mach/clock.c
@@ -6586,10 +6586,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/mfp.h
 +
 +
 +#endif /* __ASM_ARCH_MFP_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/nuc970-etimer.h
+Index: b/arch/arm/mach-nuc970/include/mach/nuc970-etimer.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/nuc970-etimer.h
++++ b/arch/arm/mach-nuc970/include/mach/nuc970-etimer.h
 @@ -0,0 +1,39 @@
 +/* linux/arch/arm/mach-nuc970/include/mach/nuc970-etimer.h
 + *
@@ -6630,10 +6630,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/nuc970-etimer.h
 +
 +
 +#endif
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/nuc970-sc.h
+Index: b/arch/arm/mach-nuc970/include/mach/nuc970-sc.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/nuc970-sc.h
++++ b/arch/arm/mach-nuc970/include/mach/nuc970-sc.h
 @@ -0,0 +1,83 @@
 +/* linux/arch/arm/mach-nuc970/include/mach/nuc970-sc.h
 + *
@@ -6718,10 +6718,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/nuc970-sc.h
 +#define SC_CHKSUM_LRC			1
 +
 +#endif
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/nuc970_usbd.h
+Index: b/arch/arm/mach-nuc970/include/mach/nuc970_usbd.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/nuc970_usbd.h
++++ b/arch/arm/mach-nuc970/include/mach/nuc970_usbd.h
 @@ -0,0 +1,219 @@
 +/* linux/arch/arm/mach-nuc970/include/mach/regs_usbd.h
 + *
@@ -6942,10 +6942,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/nuc970_usbd.h
 +
 +
 +#endif /* __NUC970_USBD_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-adc.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-adc.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-adc.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-adc.h
 @@ -0,0 +1,94 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-adc.h
@@ -7042,10 +7042,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-adc.h
 +
 +#endif /*  __ASM_ARCH_REGS_CAP_H */
 \ No newline at end of file
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-aic.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-aic.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-aic.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-aic.h
 @@ -0,0 +1,62 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-clock.h
@@ -7109,10 +7109,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-aic.h
 +#define AIC_IPER		(0x118)
 +
 +#endif /*  __ASM_ARCH_REGS_AIC_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-audio.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-audio.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-audio.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-audio.h
 @@ -0,0 +1,37 @@
 +/* linux/include/asm/arch-nuc900/regs-audio.h
 + *
@@ -7151,10 +7151,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-audio.h
 +#define ACTL_PDESB2			0x44
 +
 +#endif
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-cap.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-cap.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-cap.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-cap.h
 @@ -0,0 +1,219 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-vcap.h
@@ -7375,10 +7375,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-cap.h
 +#endif
 +
 +#endif /*  __ASM_ARCH_REGS_CAP_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-clock.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-clock.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-clock.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-clock.h
 @@ -0,0 +1,40 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-clock.h
@@ -7420,10 +7420,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-clock.h
 +#define REG_CLK_UPLLCON		(CLK_BA+0x064)  /*  UPLL Control Register */
 +
 +#endif /*  __ASM_ARCH_REGS_CLOCK_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-crypto.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-crypto.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-crypto.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-crypto.h
 @@ -0,0 +1,322 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-crypto.h
@@ -7747,10 +7747,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-crypto.h
 +
 +#endif /* __ASM_ARM_REGS_IPSEC_H */
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-ebi.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-ebi.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-ebi.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-ebi.h
 @@ -0,0 +1,48 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-ebi.h
@@ -7800,10 +7800,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-ebi.h
 +
 +
 +#endif /*  __ASM_ARCH_REGS_EBI_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-etimer.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-etimer.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-etimer.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-etimer.h
 @@ -0,0 +1,29 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-etimer.h
@@ -7834,10 +7834,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-etimer.h
 +
 +
 +#endif /*  __ASM_ARCH_REGS_ETIMER_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-fmi.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-fmi.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-fmi.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-fmi.h
 @@ -0,0 +1,135 @@
 +/* linux/include/asm-arm/arch-nuc900/nuc900_reg.h
 + *
@@ -7974,10 +7974,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-fmi.h
 +#define DMACISR_WEOTIF     (1<<1)
 +
 +#endif
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-gcr.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-gcr.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-gcr.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-gcr.h
 @@ -0,0 +1,62 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-gcr.h
@@ -8041,10 +8041,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-gcr.h
 +
 +
 +#endif /*  __ASM_ARCH_REGS_GCR_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-gdma.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-gdma.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-gdma.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-gdma.h
 @@ -0,0 +1,72 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-gdma.h
@@ -8119,10 +8119,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-gdma.h
 +
 +#endif /*  __ASM_ARCH_REGS_GDMA_H */
 \ No newline at end of file
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-ge.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-ge.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-ge.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-ge.h
 @@ -0,0 +1,53 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-ge.h
@@ -8177,10 +8177,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-ge.h
 +
 +
 +#endif /*  __ASM_ARCH_REGS_GE_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-gpio.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-gpio.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-gpio.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-gpio.h
 @@ -0,0 +1,158 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-gpio.h
@@ -8340,10 +8340,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-gpio.h
 +#define NUMGPIO 0x20 * 10	//(PortA~Portj)
 +
 +#endif /*  __ASM_ARCH_REGS_GPIO_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-iic.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-iic.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-iic.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-iic.h
 @@ -0,0 +1,36 @@
 +/* linux/include/asm/arch-nuc900/regs-iic.h
 + *
@@ -8381,10 +8381,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-iic.h
 +
 +
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-jpeg.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-jpeg.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-jpeg.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-jpeg.h
 @@ -0,0 +1,125 @@
 +/* linux/include/asm/arch-nuc970/regs-jpeg.h
 + *
@@ -8511,10 +8511,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-jpeg.h
 +
 +
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-lcd.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-lcd.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-lcd.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-lcd.h
 @@ -0,0 +1,247 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-lcd.h
@@ -8763,10 +8763,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-lcd.h
 +#define REG_LCM_HC_COLOR3		(0x88)
 +
 +#endif /* __ASM_ARM_NUC970_REGS_LCD_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-mtp.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-mtp.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-mtp.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-mtp.h
 @@ -0,0 +1,61 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-clock.h
@@ -8829,10 +8829,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-mtp.h
 +
 +#endif /*  __ASM_ARCH_REGS_MTP_H */
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-pwm.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-pwm.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-pwm.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-pwm.h
 @@ -0,0 +1,38 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-pwm.h
@@ -8872,10 +8872,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-pwm.h
 +#define REG_PWM_PIIR		(PWM_BA+0x40)
 +
 +#endif /*  __ASM_ARCH_REGS_PWM_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-sc.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-sc.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-sc.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-sc.h
 @@ -0,0 +1,241 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-sc.h
@@ -9118,10 +9118,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-sc.h
 +};
 +
 +#endif /*  __ASM_ARCH_REGS_SC_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-sdh.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-sdh.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-sdh.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-sdh.h
 @@ -0,0 +1,127 @@
 +/* linux/include/asm-arm/arch-nuc900/nuc900_reg.h
 + *
@@ -9250,10 +9250,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-sdh.h
 +
 +
 +#endif
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-serial.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-serial.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-serial.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-serial.h
 @@ -0,0 +1,79 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-serial.h
@@ -9334,10 +9334,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-serial.h
 +
 +#endif /* __ASM_ARM_REGS_SERIAL_H */
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-timer.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-timer.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-timer.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-timer.h
 @@ -0,0 +1,45 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-timer.h
@@ -9384,10 +9384,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-timer.h
 +
 +
 +#endif /*  __ASM_ARCH_REGS_TIMER_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-vcap.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-vcap.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-vcap.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-vcap.h
 @@ -0,0 +1,154 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-vcap.h
@@ -9543,10 +9543,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-vcap.h
 +#define REG_VBA0 		(VIDEOIN_BASE + 0x88)		// R/W  : System Memory Planar V Base Address Register
 +
 +#endif /*  __ASM_ARCH_REGS_VCAP_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-wdt.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-wdt.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-wdt.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-wdt.h
 @@ -0,0 +1,24 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-wdt.h
@@ -9572,10 +9572,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-wdt.h
 +
 +
 +#endif /*  __ASM_ARCH_REGS_WDT_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-wwdt.h
+Index: b/arch/arm/mach-nuc970/include/mach/regs-wwdt.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-wwdt.h
++++ b/arch/arm/mach-nuc970/include/mach/regs-wwdt.h
 @@ -0,0 +1,26 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/regs-wwdt.h
@@ -9603,10 +9603,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/regs-wwdt.h
 +
 +
 +#endif /*  __ASM_ARCH_REGS_WWDT_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/system.h
+Index: b/arch/arm/mach-nuc970/include/mach/system.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/system.h
++++ b/arch/arm/mach-nuc970/include/mach/system.h
 @@ -0,0 +1,34 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/system.h
@@ -9642,10 +9642,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/system.h
 +	}
 +}
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/timex.h
+Index: b/arch/arm/mach-nuc970/include/mach/timex.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/timex.h
++++ b/arch/arm/mach-nuc970/include/mach/timex.h
 @@ -0,0 +1,21 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/timex.h
@@ -9668,10 +9668,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/timex.h
 +#define CLOCK_TICK_RATE 15000000
 +
 +#endif /* __ASM_ARCH_TIMEX_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/uncompress.h
+Index: b/arch/arm/mach-nuc970/include/mach/uncompress.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/uncompress.h
++++ b/arch/arm/mach-nuc970/include/mach/uncompress.h
 @@ -0,0 +1,46 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/uncompress.h
@@ -9719,10 +9719,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/uncompress.h
 +}
 +
 +#endif/* __ASM_NUC970_UNCOMPRESS_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/vmalloc.h
+Index: b/arch/arm/mach-nuc970/include/mach/vmalloc.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/include/mach/vmalloc.h
++++ b/arch/arm/mach-nuc970/include/mach/vmalloc.h
 @@ -0,0 +1,19 @@
 +/*
 + * arch/arm/mach-nuc970/include/mach/vmalloc.h
@@ -9743,10 +9743,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/include/mach/vmalloc.h
 +#define VMALLOC_END	  (0xe0000000UL)
 +
 +#endif /* __ASM_ARCH_VMALLOC_H */
-Index: linux-4.4.92/arch/arm/mach-nuc970/irq.c
+Index: b/arch/arm/mach-nuc970/irq.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/irq.c
++++ b/arch/arm/mach-nuc970/irq.c
 @@ -0,0 +1,576 @@
 +/*
 + * linux/arch/arm/mach-nuc970/irq.c
@@ -10324,10 +10324,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/irq.c
 +}
 +
 +#endif
-Index: linux-4.4.92/arch/arm/mach-nuc970/mach-nuc970.c
+Index: b/arch/arm/mach-nuc970/mach-nuc970.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/mach-nuc970.c
++++ b/arch/arm/mach-nuc970/mach-nuc970.c
 @@ -0,0 +1,94 @@
 + /*
 + * linux/arch/arm/mach-nuc970/mach-nuc970.c
@@ -10423,10 +10423,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/mach-nuc970.c
 +	.restart	= nuc970_restart,
 +MACHINE_END
 +#endif
-Index: linux-4.4.92/arch/arm/mach-nuc970/mfp.c
+Index: b/arch/arm/mach-nuc970/mfp.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/mfp.c
++++ b/arch/arm/mach-nuc970/mfp.c
 @@ -0,0 +1,170 @@
 +/*
 + * linux/arch/arm/mach-nuc970/mfp.c
@@ -10598,10 +10598,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/mfp.c
 +EXPORT_SYMBOL(nuc970_mfp_set_port_i);
 +
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/pm.c
+Index: b/arch/arm/mach-nuc970/pm.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/pm.c
++++ b/arch/arm/mach-nuc970/pm.c
 @@ -0,0 +1,99 @@
 +/* linux/arch/arm/mach-nuc970/pm.c
 + *
@@ -10702,10 +10702,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/pm.c
 +}
 +#endif
 +
-Index: linux-4.4.92/arch/arm/mach-nuc970/pm.h
+Index: b/arch/arm/mach-nuc970/pm.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/pm.h
++++ b/arch/arm/mach-nuc970/pm.h
 @@ -0,0 +1,22 @@
 +/* linux/arch/arm/mach-nuc970/pm.c
 + *
@@ -10729,10 +10729,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/pm.h
 +#endif
 +
 +#endif /* _MACH_NUC970_PM_H_ */
-Index: linux-4.4.92/arch/arm/mach-nuc970/suspend.S
+Index: b/arch/arm/mach-nuc970/suspend.S
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/suspend.S
++++ b/arch/arm/mach-nuc970/suspend.S
 @@ -0,0 +1,68 @@
 + /* arch/arm/mach-nuc970/suspend.S
 + *
@@ -10802,10 +10802,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/suspend.S
 +        mov    	pc, lr
 +ENTRY(nuc970_sys_suspend_sz)
 +	.word	. - nuc970_sys_suspend
-Index: linux-4.4.92/arch/arm/mach-nuc970/time.c
+Index: b/arch/arm/mach-nuc970/time.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/arch/arm/mach-nuc970/time.c
++++ b/arch/arm/mach-nuc970/time.c
 @@ -0,0 +1,326 @@
 +/*
 + * linux/arch/arm/mach-nuc970/time.c
@@ -11133,10 +11133,10 @@ Index: linux-4.4.92/arch/arm/mach-nuc970/time.c
 +	nuc970_clockevents_init();
 +	nuc970_setup_default_serial_console();
 +}
-Index: linux-4.4.92/drivers/gpio/Kconfig
+Index: b/drivers/gpio/Kconfig
 ===================================================================
---- linux-4.4.92.orig/drivers/gpio/Kconfig
-+++ linux-4.4.92/drivers/gpio/Kconfig
+--- a/drivers/gpio/Kconfig
++++ b/drivers/gpio/Kconfig
 @@ -97,6 +97,19 @@ config GPIO_MAX730X
  
  menu "Memory mapped GPIO drivers"
@@ -11157,19 +11157,19 @@ Index: linux-4.4.92/drivers/gpio/Kconfig
  config GPIO_74XX_MMIO
  	tristate "GPIO driver for 74xx-ICs with MMIO access"
  	depends on OF_GPIO
-Index: linux-4.4.92/drivers/gpio/Makefile
+Index: b/drivers/gpio/Makefile
 ===================================================================
---- linux-4.4.92.orig/drivers/gpio/Makefile
-+++ linux-4.4.92/drivers/gpio/Makefile
+--- a/drivers/gpio/Makefile
++++ b/drivers/gpio/Makefile
 @@ -119,3 +119,4 @@ obj-$(CONFIG_GPIO_XTENSA)	+= gpio-xtensa
  obj-$(CONFIG_GPIO_ZEVIO)	+= gpio-zevio.o
  obj-$(CONFIG_GPIO_ZYNQ)		+= gpio-zynq.o
  obj-$(CONFIG_GPIO_ZX)		+= gpio-zx.o
 +obj-$(CONFIG_GPIO_NUC970)       += gpio-nuc970.o
-Index: linux-4.4.92/drivers/gpio/gpio-nuc970.c
+Index: b/drivers/gpio/gpio-nuc970.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/drivers/gpio/gpio-nuc970.c
++++ b/drivers/gpio/gpio-nuc970.c
 @@ -0,0 +1,1104 @@
 +/*
 + *  linux/drivers/drivers/gpio/nuc970-gpio.c - Nuvoton NUC970 GPIO Drive
@@ -12275,10 +12275,10 @@ Index: linux-4.4.92/drivers/gpio/gpio-nuc970.c
 +MODULE_DESCRIPTION("GPIO interface for Nuvoton NUC970 GPIO Drive");
 +MODULE_LICENSE("GPL");
 +MODULE_ALIAS("platform:nuc970_gpio");
-Index: linux-4.4.92/drivers/net/ethernet/nuvoton/Kconfig
+Index: b/drivers/net/ethernet/nuvoton/Kconfig
 ===================================================================
---- linux-4.4.92.orig/drivers/net/ethernet/nuvoton/Kconfig
-+++ linux-4.4.92/drivers/net/ethernet/nuvoton/Kconfig
+--- a/drivers/net/ethernet/nuvoton/Kconfig
++++ b/drivers/net/ethernet/nuvoton/Kconfig
 @@ -5,7 +5,7 @@
  config NET_VENDOR_NUVOTON
  	bool "Nuvoton devices"
@@ -12313,20 +12313,20 @@ Index: linux-4.4.92/drivers/net/ethernet/nuvoton/Kconfig
 +	  on NUC970 MCU.
 +
  endif # NET_VENDOR_NUVOTON
-Index: linux-4.4.92/drivers/net/ethernet/nuvoton/Makefile
+Index: b/drivers/net/ethernet/nuvoton/Makefile
 ===================================================================
---- linux-4.4.92.orig/drivers/net/ethernet/nuvoton/Makefile
-+++ linux-4.4.92/drivers/net/ethernet/nuvoton/Makefile
+--- a/drivers/net/ethernet/nuvoton/Makefile
++++ b/drivers/net/ethernet/nuvoton/Makefile
 @@ -3,3 +3,5 @@
  #
  
  obj-$(CONFIG_W90P910_ETH) += w90p910_ether.o
 +obj-$(CONFIG_NUC970_ETH0) += nuc970_ether0.o
 +obj-$(CONFIG_NUC970_ETH1) += nuc970_ether1.o
-Index: linux-4.4.92/drivers/net/ethernet/nuvoton/nuc970_ether0.c
+Index: b/drivers/net/ethernet/nuvoton/nuc970_ether0.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/drivers/net/ethernet/nuvoton/nuc970_ether0.c
++++ b/drivers/net/ethernet/nuvoton/nuc970_ether0.c
 @@ -0,0 +1,1375 @@
 +/*
 + * Copyright (c) 2014-2016 Nuvoton Technology Corporation.
@@ -13703,10 +13703,10 @@ Index: linux-4.4.92/drivers/net/ethernet/nuvoton/nuc970_ether0.c
 +MODULE_LICENSE("GPL");
 +MODULE_ALIAS("platform:nuc970-emac0");
 +
-Index: linux-4.4.92/drivers/net/ethernet/nuvoton/nuc970_ether1.c
+Index: b/drivers/net/ethernet/nuvoton/nuc970_ether1.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/drivers/net/ethernet/nuvoton/nuc970_ether1.c
++++ b/drivers/net/ethernet/nuvoton/nuc970_ether1.c
 @@ -0,0 +1,1375 @@
 +/*
 + * Copyright (c) 2014-2016 Nuvoton Technology Corporation.
@@ -15083,10 +15083,10 @@ Index: linux-4.4.92/drivers/net/ethernet/nuvoton/nuc970_ether1.c
 +MODULE_LICENSE("GPL");
 +MODULE_ALIAS("platform:nuc970-emac1");
 +
-Index: linux-4.4.92/drivers/pinctrl/Kconfig
+Index: b/drivers/pinctrl/Kconfig
 ===================================================================
---- linux-4.4.92.orig/drivers/pinctrl/Kconfig
-+++ linux-4.4.92/drivers/pinctrl/Kconfig
+--- a/drivers/pinctrl/Kconfig
++++ b/drivers/pinctrl/Kconfig
 @@ -53,6 +53,14 @@ config PINCTRL_BF60x
  	def_bool y if BF60x
  	select PINCTRL_ADI2
@@ -15102,10 +15102,10 @@ Index: linux-4.4.92/drivers/pinctrl/Kconfig
  config PINCTRL_AT91
  	bool "AT91 pinctrl driver"
  	depends on OF
-Index: linux-4.4.92/drivers/pinctrl/Makefile
+Index: b/drivers/pinctrl/Makefile
 ===================================================================
---- linux-4.4.92.orig/drivers/pinctrl/Makefile
-+++ linux-4.4.92/drivers/pinctrl/Makefile
+--- a/drivers/pinctrl/Makefile
++++ b/drivers/pinctrl/Makefile
 @@ -35,6 +35,11 @@ obj-$(CONFIG_PINCTRL_U300)	+= pinctrl-u3
  obj-$(CONFIG_PINCTRL_COH901)	+= pinctrl-coh901.o
  obj-$(CONFIG_PINCTRL_XWAY)	+= pinctrl-xway.o
@@ -15118,10 +15118,10 @@ Index: linux-4.4.92/drivers/pinctrl/Makefile
  obj-$(CONFIG_PINCTRL_LPC18XX)	+= pinctrl-lpc18xx.o
  obj-$(CONFIG_PINCTRL_TB10X)	+= pinctrl-tb10x.o
  obj-$(CONFIG_PINCTRL_ST) 	+= pinctrl-st.o
-Index: linux-4.4.92/drivers/pinctrl/pinctrl-nuc970-dt.c
+Index: b/drivers/pinctrl/pinctrl-nuc970-dt.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/drivers/pinctrl/pinctrl-nuc970-dt.c
++++ b/drivers/pinctrl/pinctrl-nuc970-dt.c
 @@ -0,0 +1,742 @@
 +/*
 + * Copyright (c) 2017 Nuvoton Technology Corp.
@@ -15865,10 +15865,10 @@ Index: linux-4.4.92/drivers/pinctrl/pinctrl-nuc970-dt.c
 +MODULE_DESCRIPTION("Nuvoton NUC970 SOC series pinctrl driver");
 +MODULE_LICENSE("GPL");
 +
-Index: linux-4.4.92/drivers/pinctrl/pinctrl-nuc970.c
+Index: b/drivers/pinctrl/pinctrl-nuc970.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/drivers/pinctrl/pinctrl-nuc970.c
++++ b/drivers/pinctrl/pinctrl-nuc970.c
 @@ -0,0 +1,3675 @@
 +/*
 + * Copyright (c) 2014 Nuvoton Technology Corp.
@@ -19545,10 +19545,10 @@ Index: linux-4.4.92/drivers/pinctrl/pinctrl-nuc970.c
 +
 +MODULE_AUTHOR("Nuvoton Technology Corp.");
 +MODULE_LICENSE("GPL");
-Index: linux-4.4.92/drivers/tty/serial/Kconfig
+Index: b/drivers/tty/serial/Kconfig
 ===================================================================
---- linux-4.4.92.orig/drivers/tty/serial/Kconfig
-+++ linux-4.4.92/drivers/tty/serial/Kconfig
+--- a/drivers/tty/serial/Kconfig
++++ b/drivers/tty/serial/Kconfig
 @@ -18,6 +18,310 @@ source "drivers/tty/serial/8250/Kconfig"
  
  comment "Non-8250 serial port support"
@@ -19860,10 +19860,10 @@ Index: linux-4.4.92/drivers/tty/serial/Kconfig
  config SERIAL_AMBA_PL010
  	tristate "ARM AMBA PL010 serial port support"
  	depends on ARM_AMBA
-Index: linux-4.4.92/drivers/tty/serial/Makefile
+Index: b/drivers/tty/serial/Makefile
 ===================================================================
---- linux-4.4.92.orig/drivers/tty/serial/Makefile
-+++ linux-4.4.92/drivers/tty/serial/Makefile
+--- a/drivers/tty/serial/Makefile
++++ b/drivers/tty/serial/Makefile
 @@ -88,6 +88,12 @@ obj-$(CONFIG_SERIAL_AR933X)   += ar933x_
  obj-$(CONFIG_SERIAL_EFM32_UART) += efm32-uart.o
  obj-$(CONFIG_SERIAL_ARC)	+= arc_uart.o
@@ -19877,10 +19877,10 @@ Index: linux-4.4.92/drivers/tty/serial/Makefile
  obj-$(CONFIG_SERIAL_FSL_LPUART)	+= fsl_lpuart.o
  obj-$(CONFIG_SERIAL_CONEXANT_DIGICOLOR)	+= digicolor-usart.o
  obj-$(CONFIG_SERIAL_MEN_Z135)	+= men_z135_uart.o
-Index: linux-4.4.92/drivers/tty/serial/nuc970_scuart.c
+Index: b/drivers/tty/serial/nuc970_scuart.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/drivers/tty/serial/nuc970_scuart.c
++++ b/drivers/tty/serial/nuc970_scuart.c
 @@ -0,0 +1,732 @@
 +/*
 + *  linux/drivers/tty/serial/nuc970_scuart.c
@@ -20614,10 +20614,10 @@ Index: linux-4.4.92/drivers/tty/serial/nuc970_scuart.c
 +
 +MODULE_ALIAS_CHARDEV_MAJOR(TTY_MAJOR);
 +
-Index: linux-4.4.92/drivers/tty/serial/nuc970_serial-dt.c
+Index: b/drivers/tty/serial/nuc970_serial-dt.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/drivers/tty/serial/nuc970_serial-dt.c
++++ b/drivers/tty/serial/nuc970_serial-dt.c
 @@ -0,0 +1,1124 @@
 +/*
 + *  linux/drivers/serial/nuc970_serial.c
@@ -21743,10 +21743,10 @@ Index: linux-4.4.92/drivers/tty/serial/nuc970_serial-dt.c
 +MODULE_DESCRIPTION("NUC970 serial driver");
 +
 +MODULE_ALIAS_CHARDEV_MAJOR(TTY_MAJOR);
-Index: linux-4.4.92/drivers/tty/serial/nuc970_serial.c
+Index: b/drivers/tty/serial/nuc970_serial.c
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/drivers/tty/serial/nuc970_serial.c
++++ b/drivers/tty/serial/nuc970_serial.c
 @@ -0,0 +1,1371 @@
 +/*
 + *  linux/drivers/serial/nuc970_serial.c
@@ -23119,10 +23119,10 @@ Index: linux-4.4.92/drivers/tty/serial/nuc970_serial.c
 +MODULE_DESCRIPTION("NUC970 serial driver");
 +
 +MODULE_ALIAS_CHARDEV_MAJOR(TTY_MAJOR);
-Index: linux-4.4.92/drivers/tty/serial/nuc970_serial.h
+Index: b/drivers/tty/serial/nuc970_serial.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/drivers/tty/serial/nuc970_serial.h
++++ b/drivers/tty/serial/nuc970_serial.h
 @@ -0,0 +1,72 @@
 +/*
 + *  linux/drivers/serial/nuc970_serial.h
@@ -23196,10 +23196,10 @@ Index: linux-4.4.92/drivers/tty/serial/nuc970_serial.h
 +#define FUN_SEL_Msk		0x00000007
 +
 +#endif // __NUC970_SERIAL_H__
-Index: linux-4.4.92/include/linux/platform_data/dma-nuc970.h
+Index: b/include/linux/platform_data/dma-nuc970.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/include/linux/platform_data/dma-nuc970.h
++++ b/include/linux/platform_data/dma-nuc970.h
 @@ -0,0 +1,79 @@
 +#ifndef __ASM_ARCH_DMA_H
 +#define __ASM_ARCH_DMA_H
@@ -23280,10 +23280,10 @@ Index: linux-4.4.92/include/linux/platform_data/dma-nuc970.h
 +}
 +#endif
 +#endif /* __ASM_ARCH_DMA_H */
-Index: linux-4.4.92/include/linux/platform_data/i2c-nuc970.h
+Index: b/include/linux/platform_data/i2c-nuc970.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/include/linux/platform_data/i2c-nuc970.h
++++ b/include/linux/platform_data/i2c-nuc970.h
 @@ -0,0 +1,11 @@
 +#ifndef __ASM_ARCH_NUC970_I2C_H
 +#define __ASM_ARCH_NUC970_I2C_H
@@ -23296,10 +23296,10 @@ Index: linux-4.4.92/include/linux/platform_data/i2c-nuc970.h
 +};
 +
 +#endif /* __ASM_ARCH_NUC970_I2C_H */
-Index: linux-4.4.92/include/linux/platform_data/keypad-nuc970.h
+Index: b/include/linux/platform_data/keypad-nuc970.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/include/linux/platform_data/keypad-nuc970.h
++++ b/include/linux/platform_data/keypad-nuc970.h
 @@ -0,0 +1,25 @@
 +/*
 + * /linux/platform_data/keypad-nuc970.h
@@ -23326,10 +23326,10 @@ Index: linux-4.4.92/include/linux/platform_data/keypad-nuc970.h
 +};
 +
 +#endif /* __ASM_ARCH_W90P910_KEYPAD_H */
-Index: linux-4.4.92/include/linux/platform_data/spi-nuc970.h
+Index: b/include/linux/platform_data/spi-nuc970.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/include/linux/platform_data/spi-nuc970.h
++++ b/include/linux/platform_data/spi-nuc970.h
 @@ -0,0 +1,31 @@
 +/*
 + * arch/arm/mach-w90x900/include/mach/nuc970_spi.h
@@ -23362,10 +23362,10 @@ Index: linux-4.4.92/include/linux/platform_data/spi-nuc970.h
 +};
 +
 +#endif 
-Index: linux-4.4.92/include/linux/platform_data/video-nuc970fb.h
+Index: b/include/linux/platform_data/video-nuc970fb.h
 ===================================================================
 --- /dev/null
-+++ linux-4.4.92/include/linux/platform_data/video-nuc970fb.h
++++ b/include/linux/platform_data/video-nuc970fb.h
 @@ -0,0 +1,81 @@
 +/* linux/include/asm/arch-nuc970/fb.h
 + *
@@ -23448,10 +23448,10 @@ Index: linux-4.4.92/include/linux/platform_data/video-nuc970fb.h
 +extern void __init nuc970_fb_set_platdata(struct nuc970fb_mach_info *);
 +
 +#endif /* __ASM_ARM_FB_H */
-Index: linux-4.4.92/include/uapi/linux/serial_core.h
+Index: b/include/uapi/linux/serial_core.h
 ===================================================================
---- linux-4.4.92.orig/include/uapi/linux/serial_core.h
-+++ linux-4.4.92/include/uapi/linux/serial_core.h
+--- a/include/uapi/linux/serial_core.h
++++ b/include/uapi/linux/serial_core.h
 @@ -261,4 +261,7 @@
  /* STM32 USART */
  #define PORT_STM32	113
@@ -23460,10 +23460,10 @@ Index: linux-4.4.92/include/uapi/linux/serial_core.h
 +#define PORT_NUC970 114
 +
  #endif /* _UAPILINUX_SERIAL_CORE_H */
-Index: linux-4.4.92/arch/arm/tools/mach-types
+Index: b/arch/arm/tools/mach-types
 ===================================================================
---- linux-4.4.92.orig/arch/arm/tools/mach-types
-+++ linux-4.4.92/arch/arm/tools/mach-types
+--- a/arch/arm/tools/mach-types
++++ b/arch/arm/tools/mach-types
 @@ -1006,6 +1006,7 @@ eco5_bx2		MACH_ECO5_BX2		ECO5_BX2		4572
  eukrea_cpuimx28sd	MACH_EUKREA_CPUIMX28SD	EUKREA_CPUIMX28SD	4573
  domotab			MACH_DOMOTAB		DOMOTAB			4574
