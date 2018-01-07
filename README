@@ -1,0 +1,5 @@
+NUC970 platform. 
+support lede (tag 17.1.4).
+How to build?
+copy 'nuc970' or make a soft link(refer to install.sh) to lede/taget/linux/nuc970, then do what we build lede usually.
+
